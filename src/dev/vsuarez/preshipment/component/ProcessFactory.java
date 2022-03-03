@@ -19,6 +19,8 @@
 package dev.vsuarez.preshipment.component;
 
 import dev.vsuarez.preshipment.base.CustomProcessFactory;
+import dev.vsuarez.preshipment.process.IVS_ClosePreShipment;
+import dev.vsuarez.preshipment.process.IVS_GeneratePreShipment;
 
 /**
  * Process Factory
@@ -36,6 +38,8 @@ public class ProcessFactory extends CustomProcessFactory {
 	 */
 	@Override
 	protected void initialize() {
+		registerProcess(IVS_GeneratePreShipment.class);
+		registerProcess(IVS_ClosePreShipment.class);
 	}
 
 }

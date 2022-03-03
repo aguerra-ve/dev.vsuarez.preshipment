@@ -19,6 +19,8 @@
 package dev.vsuarez.preshipment.component;
 
 import dev.vsuarez.preshipment.base.CustomModelFactory;
+import dev.vsuarez.preshipment.model.MPreShipment;
+import dev.vsuarez.preshipment.model.MPreShipmentLine;
 
 /**
  * Model Factory
@@ -36,6 +38,8 @@ public class ModelFactory extends CustomModelFactory {
 	 */
 	@Override
 	protected void initialize() {
+		registerModel(MPreShipment.Table_Name, MPreShipment.class);
+		registerModel(MPreShipmentLine.Table_Name, MPreShipmentLine.class);
 	}
 
 }

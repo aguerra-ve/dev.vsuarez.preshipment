@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" configuration-policy="optional" immediate="true" name="dev.vsuarez.preshipment.component.ModelFactory">
    <implementation class="dev.vsuarez.preshipment.component.ModelFactory"/>
-   <property name="service.ranking" type="Integer" value="1"/>
+   <property name="service.ranking" type="Integer" value="100"/>
    <service>
       <provide interface="org.adempiere.base.IModelFactory"/>
    </service>
