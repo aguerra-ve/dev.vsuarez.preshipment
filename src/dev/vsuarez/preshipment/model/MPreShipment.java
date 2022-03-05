@@ -93,8 +93,9 @@ public class MPreShipment extends X_IVS_PreShipment implements DocAction, DocOpt
 		List<MPreShipmentLine> m_lines = getLines(null);
 		if(m_lines != null) {
 			for(MPreShipmentLine line : m_lines) {
-				if(line.getQtyDispatched() == null || line.getQtyDispatched().signum() <=0 || line.getM_InOutLine_ID() <= 0)
-					line.delete(true);
+				if((!MInOut.DOCSTATUS_Drafted.equalsIgnoreCase(line.getM_InOut().getDocStatus()) && !MInOut.DOCSTATUS_InProgress.equalsIgnoreCase(line.getM_InOut().getDocStatus())) 
+						|| line.getQtyDispatched() == null || line.getQtyDispatched().signum() <=0 || line.getM_InOutLine_ID() <= 0)
+					line.delete(true, null);
 			}
 		}
 		m_lines = getLines(null);
@@ -138,6 +139,9 @@ public class MPreShipment extends X_IVS_PreShipment implements DocAction, DocOpt
 		setIsApproved(false);
 		return true;
 	}
+	
+	/**	In Outs Generateds	**/
+	StringBuilder m_inOutsGenerateds = new StringBuilder("");
 
 	@Override
 	public String completeIt() {
@@ -163,6 +167,8 @@ public class MPreShipment extends X_IVS_PreShipment implements DocAction, DocOpt
 		
 		m_processMsg = m_Summary;
 		setDescription(m_Summary);
+		setShipmentsGenerated(m_inOutsGenerateds.toString());
+		
 		setProcessed(true);
 		setDocAction(DOCACTION_Close);
 		return DocAction.STATUS_Completed;
@@ -181,15 +187,18 @@ public class MPreShipment extends X_IVS_PreShipment implements DocAction, DocOpt
 				if(io.processIt(MInOut.DOCACTION_Complete)) {
 					io.save();
 					msg.append(" ").append(io.getDocumentNo());
+					if(m_inOutsGenerateds.length() > 0)
+						m_inOutsGenerateds.append(",");
+					m_inOutsGenerateds.append(io.getM_InOut_ID());
 					count++;
 				} else {
 					io.save();
-					m_processMsg = "No se Proceso la Entrega " + io.getProcessMsg();
+					m_processMsg = "No se Proceso la Entrega " + io.getDocumentNo() + " - " + io.getProcessMsg();
 					return;
 				}
 			} catch (Exception e) {
 				io.save();
-				m_processMsg = "No se Proceso la Entrega " + io.getProcessMsg() + " - " + e.getLocalizedMessage();
+				m_processMsg = "No se Proceso la Entrega " + io.getDocumentNo() + " - " + io.getProcessMsg() + " - " + e.getLocalizedMessage();
 				return;
 			}
 		}

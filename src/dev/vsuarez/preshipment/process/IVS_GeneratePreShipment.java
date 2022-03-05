@@ -51,8 +51,9 @@ public class IVS_GeneratePreShipment extends CustomProcess {
 			psLine.setIVS_PreShipment_ID(preShipment.getIVS_PreShipment_ID());
 			psLine.setAD_Org_ID(preShipment.getAD_Org_ID());
 			psLine.setM_InOut_ID(ioLine.getM_InOut_ID());
-			psLine.setM_InOutLine_ID(inOutLine.intValue());
+			psLine.setM_InOutLine_ID(ioLine.getM_InOutLine_ID());
 			psLine.setC_BPartner_ID(ioLine.getM_InOut().getC_BPartner_ID());
+			psLine.setC_Order_ID(ioLine.getC_OrderLine().getC_Order_ID());
 			psLine.setC_UOM_ID(ioLine.getC_UOM_ID());
 			psLine.setLineNo(lineNo);
 			psLine.setM_AttributeSetInstance_ID(ioLine.getM_AttributeSetInstance_ID());
