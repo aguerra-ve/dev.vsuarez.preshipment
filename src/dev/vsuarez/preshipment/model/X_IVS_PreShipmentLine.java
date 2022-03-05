@@ -32,7 +32,7 @@ public class X_IVS_PreShipmentLine extends PO implements I_IVS_PreShipmentLine, 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20220301L;
+	private static final long serialVersionUID = 20220305L;
 
     /** Standard Constructor */
     public X_IVS_PreShipmentLine (Properties ctx, int IVS_PreShipmentLine_ID, String trxName)
@@ -123,6 +123,34 @@ public class X_IVS_PreShipmentLine extends PO implements I_IVS_PreShipmentLine, 
 	public int getC_Charge_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_C_Charge_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public org.compiere.model.I_C_Order getC_Order() throws RuntimeException
+    {
+		return (org.compiere.model.I_C_Order)MTable.get(getCtx(), org.compiere.model.I_C_Order.Table_Name)
+			.getPO(getC_Order_ID(), get_TrxName());	}
+
+	/** Set Order.
+		@param C_Order_ID 
+		Order
+	  */
+	public void setC_Order_ID (int C_Order_ID)
+	{
+		if (C_Order_ID < 1) 
+			set_Value (COLUMNNAME_C_Order_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_Order_ID, Integer.valueOf(C_Order_ID));
+	}
+
+	/** Get Order.
+		@return Order
+	  */
+	public int getC_Order_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_Order_ID);
 		if (ii == null)
 			 return 0;
 		return ii.intValue();

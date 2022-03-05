@@ -273,6 +273,15 @@ public interface I_IVS_PreShipment
 
 	public org.compiere.model.I_AD_User getSalesRep() throws RuntimeException;
 
+    /** Column name ShipmentsGenerated */
+    public static final String COLUMNNAME_ShipmentsGenerated = "ShipmentsGenerated";
+
+	/** Set Shipments Generated	  */
+	public void setShipmentsGenerated (String ShipmentsGenerated);
+
+	/** Get Shipments Generated	  */
+	public String getShipmentsGenerated();
+
     /** Column name Updated */
     public static final String COLUMNNAME_Updated = "Updated";
 

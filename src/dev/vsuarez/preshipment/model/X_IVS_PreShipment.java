@@ -31,7 +31,7 @@ public class X_IVS_PreShipment extends PO implements I_IVS_PreShipment, I_Persis
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20220225L;
+	private static final long serialVersionUID = 20220304L;
 
     /** Standard Constructor */
     public X_IVS_PreShipment (Properties ctx, int IVS_PreShipment_ID, String trxName)
@@ -415,5 +415,22 @@ public class X_IVS_PreShipment extends PO implements I_IVS_PreShipment, I_Persis
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
+	}
+
+	/** ShipmentsGenerated AD_Reference_ID=337 */
+	public static final int SHIPMENTSGENERATED_AD_Reference_ID=337;
+	/** Set Shipments Generated.
+		@param ShipmentsGenerated Shipments Generated	  */
+	public void setShipmentsGenerated (String ShipmentsGenerated)
+	{
+
+		set_Value (COLUMNNAME_ShipmentsGenerated, ShipmentsGenerated);
+	}
+
+	/** Get Shipments Generated.
+		@return Shipments Generated	  */
+	public String getShipmentsGenerated () 
+	{
+		return (String)get_Value(COLUMNNAME_ShipmentsGenerated);
 	}
 }
