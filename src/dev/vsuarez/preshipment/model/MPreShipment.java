@@ -174,6 +174,19 @@ public class MPreShipment extends X_IVS_PreShipment implements DocAction, DocOpt
 	}
 	
 	/**
+	 * Set Processed
+	 */
+	@Override
+	public void setProcessed(boolean processed) {
+		super.setProcessed(processed);
+		m_lines = getLines(null);
+		for(MPreShipmentLine line : m_lines) {
+			line.setProcessed(processed);
+			line.save();
+		}
+	}
+	
+	/**
 	 * Complete M_InOuts of this Pre-Shipment
 	 * @param inOuts - List of M_InOut to Complete
 	 */
