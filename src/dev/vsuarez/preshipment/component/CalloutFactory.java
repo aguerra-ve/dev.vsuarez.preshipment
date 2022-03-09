@@ -19,6 +19,8 @@
 package dev.vsuarez.preshipment.component;
 
 import dev.vsuarez.preshipment.base.CustomCalloutFactory;
+import dev.vsuarez.preshipment.callout.SetLinesValues;
+import dev.vsuarez.preshipment.model.MPreShipmentLine;
 
 /**
  * Callout Factory
@@ -36,6 +38,7 @@ public class CalloutFactory extends CustomCalloutFactory {
 	 */
 	@Override
 	protected void initialize() {
+		registerCallout(MPreShipmentLine.Table_Name, MPreShipmentLine.COLUMNNAME_M_InOutLine_ID, SetLinesValues.class);
 	}
 
 }

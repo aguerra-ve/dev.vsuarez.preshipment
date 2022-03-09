@@ -166,7 +166,6 @@ public class MPreShipment extends X_IVS_PreShipment implements DocAction, DocOpt
 			return DocAction.STATUS_Invalid;
 		
 		m_processMsg = m_Summary;
-		setDescription(m_Summary);
 		setShipmentsGenerated(m_inOutsGenerateds.toString());
 		
 		setProcessed(true);
