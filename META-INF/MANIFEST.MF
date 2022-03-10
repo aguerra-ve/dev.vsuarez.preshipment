@@ -3,7 +3,7 @@ Bundle-Category: idempiere-plugin
 Bundle-ManifestVersion: 2
 Bundle-Name: iDempiere Plugin Pre-Shipment
 Bundle-SymbolicName: dev.vsuarez.preshipment
-Bundle-Version: 2.1.0.qualifier
+Bundle-Version: 2.1.1.qualifier
 Bundle-Vendor: Ing. Victor Suarez - victor.suarez.is@gmail.com
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.apache.commons.lang3,
