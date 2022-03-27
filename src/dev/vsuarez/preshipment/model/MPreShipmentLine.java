@@ -3,6 +3,7 @@
  */
 package dev.vsuarez.preshipment.model;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.util.Properties;
 
@@ -25,7 +26,6 @@ public class MPreShipmentLine extends X_IVS_PreShipmentLine {
 	 */
 	public MPreShipmentLine(Properties ctx, ResultSet rs, String trxName) {
 		super(ctx, rs, trxName);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -35,7 +35,6 @@ public class MPreShipmentLine extends X_IVS_PreShipmentLine {
 	 */
 	public MPreShipmentLine(Properties ctx, int IVS_PreShipmentLine_ID, String trxName) {
 		super(ctx, IVS_PreShipmentLine_ID, trxName);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -49,6 +48,28 @@ public class MPreShipmentLine extends X_IVS_PreShipmentLine {
 		return super.beforeSave(newRecord);
 	}
 	
+	/**
+	 * Get Weight Line
+	 * @param qtyDispached
+	 * @return
+	 */
+	protected BigDecimal getWeightLine(BigDecimal qtyDispatched) {
+		BigDecimal weightProduct = getM_Product().getWeight();
+		if(weightProduct == null)
+			weightProduct = BigDecimal.ZERO;
+		BigDecimal weightLine = qtyDispatched.multiply(weightProduct);
+		return weightLine;
+	}
 	
-
+	/**
+	 * Get Total Line
+	 * @param qtyDispached
+	 * @return
+	 */
+	protected BigDecimal getTotalLine(BigDecimal qtyDispatched) {
+		BigDecimal price = getM_InOutLine().getC_OrderLine().getPriceEntered();
+		BigDecimal totalLine = price.multiply(qtyDispatched);
+		return totalLine;
+	}
+	
 }

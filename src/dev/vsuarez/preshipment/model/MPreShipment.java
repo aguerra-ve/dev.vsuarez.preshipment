@@ -104,12 +104,37 @@ public class MPreShipment extends X_IVS_PreShipment implements DocAction, DocOpt
 			return STATUS_Invalid;
 		}
 		
+		setHeaderTotals(m_lines);
+		
 		m_processMsg = ModelValidationEngine.get().fireDocValidate(this, ModelValidator.TIMING_AFTER_PREPARE);
 		if (m_processMsg != null)
 			return DocAction.STATUS_Invalid;
 		
 		setIsApproved(true);
 		return DocAction.STATUS_InProgress;
+	}
+
+	private void setHeaderTotals(List<MPreShipmentLine> lines) {
+		BigDecimal totalQtyDispatched = BigDecimal.ZERO;
+		BigDecimal totalWeight = BigDecimal.ZERO;
+		BigDecimal grandTotal = BigDecimal.ZERO;
+		for(MPreShipmentLine line : lines) {
+			BigDecimal qtyDispatched = line.getQtyDispatched();
+			if(qtyDispatched == null)
+				qtyDispatched = BigDecimal.ZERO;
+			totalQtyDispatched = totalQtyDispatched.add(qtyDispatched);
+			
+			// Add weight to totalWeight
+			BigDecimal weightLine = line.getWeightLine(qtyDispatched);
+			totalWeight = totalWeight.add(weightLine);
+			
+			// Add Total Line to GrandTotal
+			BigDecimal totalLine = line.getTotalLine(qtyDispatched);
+			grandTotal = grandTotal.add(totalLine);
+		}
+		setMovementQty(totalQtyDispatched);
+		setTotalWeight(totalWeight);
+		setGrandTotal(grandTotal);
 	}
 
 	/**

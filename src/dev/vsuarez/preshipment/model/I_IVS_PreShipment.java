@@ -188,6 +188,19 @@ public interface I_IVS_PreShipment
 	  */
 	public String getDocumentNo();
 
+    /** Column name GrandTotal */
+    public static final String COLUMNNAME_GrandTotal = "GrandTotal";
+
+	/** Set Grand Total.
+	  * Total amount of document
+	  */
+	public void setGrandTotal (BigDecimal GrandTotal);
+
+	/** Get Grand Total.
+	  * Total amount of document
+	  */
+	public BigDecimal getGrandTotal();
+
     /** Column name Help */
     public static final String COLUMNNAME_Help = "Help";
 
@@ -245,6 +258,19 @@ public interface I_IVS_PreShipment
 	/** Get IVS_PreShipment_UU	  */
 	public String getIVS_PreShipment_UU();
 
+    /** Column name MovementQty */
+    public static final String COLUMNNAME_MovementQty = "MovementQty";
+
+	/** Set Movement Quantity.
+	  * Quantity of a product moved.
+	  */
+	public void setMovementQty (BigDecimal MovementQty);
+
+	/** Get Movement Quantity.
+	  * Quantity of a product moved.
+	  */
+	public BigDecimal getMovementQty();
+
     /** Column name Processed */
     public static final String COLUMNNAME_Processed = "Processed";
 
@@ -281,6 +307,15 @@ public interface I_IVS_PreShipment
 
 	/** Get Shipments Generated	  */
 	public String getShipmentsGenerated();
+
+    /** Column name TotalWeight */
+    public static final String COLUMNNAME_TotalWeight = "TotalWeight";
+
+	/** Set Total Weight	  */
+	public void setTotalWeight (BigDecimal TotalWeight);
+
+	/** Get Total Weight	  */
+	public BigDecimal getTotalWeight();
 
     /** Column name Updated */
     public static final String COLUMNNAME_Updated = "Updated";

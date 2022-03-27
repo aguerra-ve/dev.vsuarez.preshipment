@@ -10,7 +10,7 @@ import org.compiere.util.DB;
 
 import dev.vsuarez.preshipment.base.CustomProcess;
 import dev.vsuarez.preshipment.model.MPreShipment;
-import dev.vsuarez.preshipment.model.X_IVS_PreShipmentLine;
+import dev.vsuarez.preshipment.model.MPreShipmentLine;
 import dev.vsuarez.preshipment.util.TimestampUtil;
 
 /**
@@ -47,7 +47,7 @@ public class IVS_GeneratePreShipment extends CustomProcess {
 				preShipment.setC_DocType_ID(C_DocType_ID);
 				preShipment.save();
 			}
-			X_IVS_PreShipmentLine psLine = new X_IVS_PreShipmentLine(getCtx(), 0, get_TrxName());
+			MPreShipmentLine psLine = new MPreShipmentLine(getCtx(), 0, get_TrxName());
 			psLine.setIVS_PreShipment_ID(preShipment.getIVS_PreShipment_ID());
 			psLine.setAD_Org_ID(preShipment.getAD_Org_ID());
 			psLine.setM_InOut_ID(ioLine.getM_InOut_ID());

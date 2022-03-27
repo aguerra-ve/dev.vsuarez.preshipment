@@ -17,10 +17,12 @@
 /** Generated Model - DO NOT CHANGE */
 package dev.vsuarez.preshipment.model;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.Properties;
 import org.compiere.model.*;
+import org.compiere.util.Env;
 
 /** Generated Model for IVS_PreShipment
  *  @author iDempiere (generated) 
@@ -31,7 +33,7 @@ public class X_IVS_PreShipment extends PO implements I_IVS_PreShipment, I_Persis
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20220304L;
+	private static final long serialVersionUID = 20220324L;
 
     /** Standard Constructor */
     public X_IVS_PreShipment (Properties ctx, int IVS_PreShipment_ID, String trxName)
@@ -290,6 +292,26 @@ public class X_IVS_PreShipment extends PO implements I_IVS_PreShipment, I_Persis
 		return (String)get_Value(COLUMNNAME_DocumentNo);
 	}
 
+	/** Set Grand Total.
+		@param GrandTotal 
+		Total amount of document
+	  */
+	public void setGrandTotal (BigDecimal GrandTotal)
+	{
+		set_Value (COLUMNNAME_GrandTotal, GrandTotal);
+	}
+
+	/** Get Grand Total.
+		@return Total amount of document
+	  */
+	public BigDecimal getGrandTotal () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_GrandTotal);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
+	}
+
 	/** Set Comment/Help.
 		@param Help 
 		Comment or Hint
@@ -365,6 +387,26 @@ public class X_IVS_PreShipment extends PO implements I_IVS_PreShipment, I_Persis
 		return (String)get_Value(COLUMNNAME_IVS_PreShipment_UU);
 	}
 
+	/** Set Movement Quantity.
+		@param MovementQty 
+		Quantity of a product moved.
+	  */
+	public void setMovementQty (BigDecimal MovementQty)
+	{
+		set_Value (COLUMNNAME_MovementQty, MovementQty);
+	}
+
+	/** Get Movement Quantity.
+		@return Quantity of a product moved.
+	  */
+	public BigDecimal getMovementQty () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_MovementQty);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
+	}
+
 	/** Set Processed.
 		@param Processed 
 		The document has been processed
@@ -432,5 +474,22 @@ public class X_IVS_PreShipment extends PO implements I_IVS_PreShipment, I_Persis
 	public String getShipmentsGenerated () 
 	{
 		return (String)get_Value(COLUMNNAME_ShipmentsGenerated);
+	}
+
+	/** Set Total Weight.
+		@param TotalWeight Total Weight	  */
+	public void setTotalWeight (BigDecimal TotalWeight)
+	{
+		set_Value (COLUMNNAME_TotalWeight, TotalWeight);
+	}
+
+	/** Get Total Weight.
+		@return Total Weight	  */
+	public BigDecimal getTotalWeight () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_TotalWeight);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
 	}
 }
