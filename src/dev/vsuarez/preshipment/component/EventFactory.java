@@ -18,7 +18,11 @@
 
 package dev.vsuarez.preshipment.component;
 
+import org.adempiere.base.event.IEventTopics;
+import org.compiere.model.MOrderLine;
+
 import dev.vsuarez.preshipment.base.CustomEventFactory;
+import dev.vsuarez.preshipment.model.EventHandler;
 
 /**
  * Event Factory
@@ -36,6 +40,7 @@ public class EventFactory extends CustomEventFactory {
 	 */
 	@Override
 	protected void initialize() {
+		registerEvent(IEventTopics.PO_BEFORE_CHANGE, MOrderLine.Table_Name, EventHandler.class);
 	}
 
 }
