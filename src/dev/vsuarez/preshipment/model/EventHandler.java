@@ -28,7 +28,7 @@ public class EventHandler extends CustomEvent {
 			if(IEventTopics.PO_BEFORE_CHANGE.equals(topic)) {
 				if(orderLine.is_ValueChanged(MOrderLine.COLUMNNAME_QtyDelivered) && orderLine.getQtyDelivered() != null) {
 					if(orderLine.getQtyDelivered().compareTo(orderLine.getQtyOrdered()) > 0)
-						throw new AdempiereException("Cantidad Ordenada " + orderLine.getQtyOrdered() + " ya fue entregada en su totalidad");
+						throw new AdempiereException("Cantidad Ordenada: " + orderLine.getQtyOrdered() + ", ya fue entregada en su totalidad");
 				}
 			}
 		}

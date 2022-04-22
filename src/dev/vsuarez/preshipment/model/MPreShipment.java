@@ -16,6 +16,9 @@ import org.compiere.model.Query;
 import org.compiere.process.DocAction;
 import org.compiere.process.DocOptions;
 import org.compiere.process.DocumentEngine;
+import org.compiere.util.CLogger;
+import org.compiere.util.Msg;
+import org.compiere.util.ValueNamePair;
 
 /**
  * Model of Pre-Shipment
@@ -229,13 +232,19 @@ public class MPreShipment extends X_IVS_PreShipment implements DocAction, DocOpt
 					m_inOutsGenerateds.append(io.getM_InOut_ID());
 					count++;
 				} else {
+					ValueNamePair err = CLogger.retrieveError();
+					String saveError = err != null ? Msg.translate(getCtx(), err.getValue()) : "";
+					
 					io.save();
-					m_processMsg = "No se Proceso la Entrega " + io.getDocumentNo() + " - " + io.getProcessMsg();
+					m_processMsg = "No se Proceso la Entrega " + io.getDocumentNo() + " - " + io.getProcessMsg() + " - " + saveError;
 					return;
 				}
 			} catch (Exception e) {
+				ValueNamePair err = CLogger.retrieveError();
+				String saveError = err != null ? Msg.translate(getCtx(), err.getValue()) : "";
+
 				io.save();
-				m_processMsg = "No se Proceso la Entrega " + io.getDocumentNo() + " - " + io.getProcessMsg() + " - " + e.getLocalizedMessage();
+				m_processMsg = "No se Proceso la Entrega " + io.getDocumentNo() + " - " + io.getProcessMsg() + " - " + e.getLocalizedMessage() + " - " + saveError;
 				return;
 			}
 		}
