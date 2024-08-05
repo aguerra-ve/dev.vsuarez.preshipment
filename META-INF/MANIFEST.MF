@@ -2,12 +2,13 @@ Manifest-Version: 1.0
 Bundle-Category: idempiere-plugin
 Bundle-ManifestVersion: 2
 Bundle-Name: iDempiere Plugin Pre-Shipment
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-SymbolicName: dev.vsuarez.preshipment
-Bundle-Version: 2.3.2.qualifier
+Bundle-Version: 11.0.0.qualifier
 Bundle-Vendor: Ing. Victor Suarez - victor.suarez.is@gmail.com
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.apache.commons.lang3,
- org.adempiere.base,
+Require-Bundle: org.adempiere.base,
+ org.apache.commons.lang3,
  org.adempiere.plugin.utils,
  org.adempiere.ui.zk,
  zcommon,
